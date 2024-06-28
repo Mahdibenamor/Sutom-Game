@@ -1,0 +1,44 @@
+<div class="box">
+    <h1 class="title has-text-centered">New Game</h1>
+    <form #form="ngForm" novalidate>
+        <div class="field">
+            <label class="label">Word Length</label>
+            <div class="field">
+                <p class="control">
+                    <input class="input" type="number" placeholder="word length" [(ngModel)]="wordLength"
+                        name="wordLength" #wordLengthField="ngModel" required min="1" />
+                </p>
+                <p class="help is-danger"
+                    *ngIf="wordLengthField.invalid && (wordLengthField.dirty || wordLengthField.touched || submitted)">
+                    <span *ngIf="wordLengthField.errors">Word Length is required.</span><br>
+                    <span *ngIf="wordLengthField.errors">Word Length must be at least 1.</span>
+                </p>
+
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Max Attempts</label>
+            <div class="field">
+                <p class="control">
+                    <input class="input" type="number" placeholder="max attempts" [(ngModel)]="maxAttempts"
+                        name="maxAttempts" #maxAttemptsField="ngModel" required min="1" />
+                </p>
+                <p class="help is-danger"
+                    *ngIf="maxAttemptsField.invalid && (maxAttemptsField.dirty || maxAttemptsField.touched || submitted)">
+                    <span *ngIf="maxAttemptsField.errors">Max Attempts is required.</span><br>
+                    <span *ngIf="maxAttemptsField.errors">Max Attempts must be at least 1.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="field is-grouped is-grouped">
+            <div class="field">
+                <div class="control">
+                    <button type="submit" [disabled]="form.invalid" class="button is-link" (click)="onSubmit()">
+                        Begin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

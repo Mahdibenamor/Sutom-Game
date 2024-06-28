@@ -1,0 +1,21 @@
+<section class="section">
+    <div class="container is-flex is-justify-content-center is-align-items-center" style="height: 100vh;">
+        <div class="box">
+            <article class="message is-info" *ngIf="showInfoMessage">
+                <div class="message-header">
+                    <p>Info</p>
+                    <button class="delete" aria-label="delete"></button>
+                </div>
+                <div class="message-body">
+                    Not in words list
+                </div>
+            </article>
+            <button class="button is-success" (click)="navigateToWelcome()">Try Again</button>
+            <h1 class="title has-text-centered">SUTOM</h1>
+            <app-board [board]="board"></app-board>
+            <app-keyboard (keyClick)="onKeyClick($event)" (enterClick)="onEnter()"
+                (backspaceClick)="onBackspace()"></app-keyboard>
+
+        </div>
+    </div>
+</section>
