@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sutom.Core", "Sutom.Core\Su
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sutom.DenpendencyInjection", "Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj", "{75B2426D-DDC0-412E-9427-6316AB8353E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sutom.Middlewares", "Sutom.Middlewares\Sutom.Middlewares.csproj", "{80D423E9-B1BB-4ECC-B78C-295420BCCA29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sutom.Middlewares", "Sutom.Middlewares\Sutom.Middlewares.csproj", "{80D423E9-B1BB-4ECC-B78C-295420BCCA29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sutom.Mobile", "Sutom.Mobile\Sutom.Mobile.csproj", "{81078776-0C58-488F-943A-A55131C02D2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,12 @@ Global
 		{80D423E9-B1BB-4ECC-B78C-295420BCCA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D423E9-B1BB-4ECC-B78C-295420BCCA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D423E9-B1BB-4ECC-B78C-295420BCCA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81078776-0C58-488F-943A-A55131C02D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81078776-0C58-488F-943A-A55131C02D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81078776-0C58-488F-943A-A55131C02D2D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{81078776-0C58-488F-943A-A55131C02D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81078776-0C58-488F-943A-A55131C02D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81078776-0C58-488F-943A-A55131C02D2D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
