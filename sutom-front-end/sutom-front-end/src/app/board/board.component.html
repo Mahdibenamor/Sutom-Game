@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="board">
+        <div class="row" *ngFor="let row of board">
+            <div *ngFor="let cell of row" [ngClass]="{'cell': true, 'correct': cell.status === 'correct', 
+                        'misplaced': cell.status === 'misplaced', 
+                        'wrong': cell.status === 'wrong'}">
+                <div>{{ cell.letter }}</div>
+            </div>
+        </div>
+    </div>
+</div>

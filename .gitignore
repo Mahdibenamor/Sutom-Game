@@ -1,0 +1,4 @@
+# Un-ignore specific files by referencing specific .gitignore files in subdirectories
+!Sutom/.gitignore
+!sutom-front-end/.gitignore
+.vs/

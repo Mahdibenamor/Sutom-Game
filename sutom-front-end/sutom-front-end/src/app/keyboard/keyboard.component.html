@@ -1,0 +1,7 @@
+<div class="keyboard">
+    <div class="row" *ngFor="let row of keys">
+        <button *ngFor="let key of row" (click)="onKeyClick(key)" [ngClass]="{'special-key': isSpecialKey(key)}">
+            {{ key }}
+        </button>
+    </div>
+</div>
