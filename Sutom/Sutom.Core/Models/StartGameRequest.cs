@@ -1,4 +1,4 @@
-﻿namespace Sutom.Application.Models
+﻿namespace Sutom.Core.Models
 {
     public class StartGameRequest
     {
