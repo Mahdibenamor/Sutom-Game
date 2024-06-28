@@ -2,11 +2,11 @@
 namespace Sutom.Core
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    public class ViewModelAttribute : Attribute
+    public class ViewModel : Attribute
     {
         public Type ViewModelType { get; }
 
-        public ViewModelAttribute(Type viewModelType)
+        public ViewModel(Type viewModelType)
         {
             ViewModelType = viewModelType;
         }

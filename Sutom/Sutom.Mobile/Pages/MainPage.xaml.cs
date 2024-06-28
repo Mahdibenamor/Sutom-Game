@@ -1,5 +1,9 @@
-﻿namespace Sutom.Mobile
+﻿using Sutom.Core;
+using Sutom.Mobile.ViewModels;
+
+namespace Sutom.Mobile
 {
+    [ViewModel(typeof(MainPageViewModel))]
     public partial class MainPage : ContentPage
     {
         int count = 0;
