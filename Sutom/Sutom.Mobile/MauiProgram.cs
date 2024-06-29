@@ -40,13 +40,14 @@ namespace Sutom.Mobile
         private static void ConfigureViews(IServiceCollection services)
         {
             services.AddTransient(provider => new MainPage());
+            services.AddTransient(provider => new GamePage());
         }
 
 
         private static void ConfigureViewModel(IServiceCollection services)
         {
-            services.AddTransient(provider => new MainPageViewModel());
-
+            services.AddSingleton<GamePageViewModel>();
+            services.AddSingleton<MainPageViewModel>();
         }
 
         private static void BuildPageViewModelMappings(IServiceCollection services)

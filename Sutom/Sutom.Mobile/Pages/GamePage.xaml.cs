@@ -4,16 +4,17 @@ using Sutom.Mobile.ViewModels;
 
 namespace Sutom.Mobile
 {
-    [ViewModel(typeof(MainPageViewModel))]
-    public partial class MainPage : ContentPage, IBasePage<MainPageViewModel>
+    [ViewModel(typeof(GamePageViewModel))]
+    public partial class GamePage : ContentPage, IBasePage<GamePageViewModel>
     {
-        private MainPageViewModel viewModel
+
+        private GamePageViewModel viewModel
         {
-            get => BindingContext as MainPageViewModel;
+            get => BindingContext as GamePageViewModel;
             set => BindingContext = value;
         }
 
-        public MainPage()
+        public GamePage()
         {
             InitializeComponent();
         }
@@ -22,5 +23,6 @@ namespace Sutom.Mobile
         {
             viewModel.CountViewModel++;
         }
+
     }
 }

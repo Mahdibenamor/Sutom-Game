@@ -16,7 +16,7 @@ namespace Sutom.Mobile.Services
         public async Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
         {
             var page = CreatePage<TViewModel>(typeof(TViewModel));
-            await Shell.Current.Navigation.PushAsync(page);
+            await App.Navigation.PushAsync(page);
         }
 
         public async Task NavigateToAsync<TViewModel>(object parameter) where TViewModel : BaseViewModel
@@ -29,12 +29,12 @@ namespace Sutom.Mobile.Services
                 await viewModel.InitializeAsync(parameter);
             }
 
-            await Shell.Current.Navigation.PushAsync(page);
+            await App.Navigation.PushAsync(page);
         }
 
         public async Task GoBackAsync()
         {
-            await Shell.Current.Navigation.PopAsync();
+            await App.Navigation.PopAsync();
         }
 
         public Page CreatePage<TViewModel>(Type viewModelType) where TViewModel : BaseViewModel
