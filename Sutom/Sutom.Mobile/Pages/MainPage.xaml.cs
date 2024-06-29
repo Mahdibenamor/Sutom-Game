@@ -1,29 +1,28 @@
 ﻿using Sutom.Core;
+using Sutom.Mobile.Pages;
 using Sutom.Mobile.ViewModels;
 
 namespace Sutom.Mobile
 {
     [ViewModel(typeof(MainPageViewModel))]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, IBasePage<MainPageViewModel>
     {
-        int count = 0;
+
+        private MainPageViewModel viewModel
+        {
+            get => BindingContext as MainPageViewModel;
+            set => BindingContext = value;
+        }
 
         public MainPage()
         {
             InitializeComponent();
+
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            viewModel.CountViewModel++;
         }
     }
-
 }

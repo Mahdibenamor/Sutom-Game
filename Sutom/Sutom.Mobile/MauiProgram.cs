@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Sutom.Core;
 using Sutom.Mobile.Core;
+using Sutom.Mobile.Services;
+using Sutom.Mobile.ViewModels;
 using System.Reflection;
 
 namespace Sutom.Mobile
@@ -22,11 +24,29 @@ namespace Sutom.Mobile
             builder.Logging.AddDebug();
 #endif
             ConfigureServices(builder.Services);
-            return builder.Build();
+            var app = builder.Build();
+            var serviceProvider = app.Services;
+
+            return app;
         }
         private static void ConfigureServices(IServiceCollection services)
         {
             BuildPageViewModelMappings(services);
+            services.AddSingleton<INavigationService, NavigationService>();
+            ConfigureViewModel(services);
+            ConfigureViews(services);
+        }
+
+        private static void ConfigureViews(IServiceCollection services)
+        {
+            services.AddTransient(provider => new MainPage());
+        }
+
+
+        private static void ConfigureViewModel(IServiceCollection services)
+        {
+            services.AddTransient(provider => new MainPageViewModel());
+
         }
 
         private static void BuildPageViewModelMappings(IServiceCollection services)

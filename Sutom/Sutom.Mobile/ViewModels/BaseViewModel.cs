@@ -1,25 +1,27 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿
 
+using System.ComponentModel;
 
 namespace Sutom.Mobile.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+
+    public interface IBaseViewModel
     {
+        public Task InitializeAsync(object parameter);
+
+    }
+
+    public abstract class BaseViewModel : INotifyPropertyChanged, IBaseViewModel 
+    {
+        public BaseViewModel() { }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        public void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (Equals(storage, value)) return false;
-
-            storage = value;
-            OnPropertyChanged(propertyName);
-            return true;
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public virtual Task InitializeAsync(object parameter)

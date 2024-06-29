@@ -63,8 +63,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Pages\" />
-		<ProjectReference Include="..\Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj" />
+	  <ProjectReference Include="..\Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj" />
 	</ItemGroup>
 
 </Project>
