@@ -1,4 +1,4 @@
-﻿using Sutom.Application.Interfaces;
+﻿using Sutom.Absrtractions;
 using System.Collections.Concurrent;
 namespace Sutom.Infrastructure.DataSources
 {

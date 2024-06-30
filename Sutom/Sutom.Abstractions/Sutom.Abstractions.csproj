@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sutom.Abstractions\Sutom.Abstractions.csproj" />
-    <ProjectReference Include="..\Sutom.Core\Sutom.Core.csproj" />
     <ProjectReference Include="..\Sutom.Domain\Sutom.Domain.csproj" />
   </ItemGroup>
 

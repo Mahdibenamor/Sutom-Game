@@ -57,14 +57,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj" />
+		<ProjectReference Include="..\Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Maui;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Sutom.Core;
 using Sutom.Mobile.Core;
 using Sutom.Mobile.Services.DialogService;
@@ -16,7 +15,6 @@ namespace Sutom.Mobile
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

@@ -1,4 +1,4 @@
-﻿namespace Sutom.Application.Interfaces
+﻿namespace Sutom.Absrtractions
 {
     public interface IWordDataSource
     {

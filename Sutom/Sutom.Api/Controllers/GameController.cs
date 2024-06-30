@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sutom.Application.Interfaces;
+using Sutom.Absrtractions;
 using Sutom.Core.Models;
 using Sutom.Domain.Entites;
 
