@@ -10,11 +10,10 @@ namespace Sutom.Application.Implementations
     public class RemoteGameService : IGameService
     {
         private readonly HttpClient _httpClient = new HttpClient();
-        private readonly string api = "http://localhost:5173/game";
+        private readonly string api = "http://10.0.2.2:5173/game";
 
-        public RemoteGameService(HttpClient httpClient)
+        public RemoteGameService()
         {
-            _httpClient = httpClient;
         }
 
         public async Task<Game> StartNewGameAsync(int wordLength, int attempts)
@@ -25,7 +24,7 @@ namespace Sutom.Application.Implementations
                 MaxAttempts = attempts
             };
 
-            var response = await _httpClient.PostAsJsonAsync($"{api}/start", request);
+            var response = await _httpClient.PostAsJsonAsync($"{api}", request);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<Game>();
         }
