@@ -1,5 +1,4 @@
-﻿
-using Sutom.Mobile.Services;
+﻿using Sutom.Mobile.Services.Navigation;
 using Sutom.Mobile.ViewModels;
 
 namespace Sutom.Mobile

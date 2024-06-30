@@ -2,7 +2,7 @@
 using Sutom.Mobile.Pages;
 using Sutom.Mobile.ViewModels;
 
-namespace Sutom.Mobile.Services
+namespace Sutom.Mobile.Services.Navigation
 {
     public class NavigationService : INavigationService
     {

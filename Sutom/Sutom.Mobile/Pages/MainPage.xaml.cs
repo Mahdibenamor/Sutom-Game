@@ -1,6 +1,4 @@
-﻿using AndroidX.Lifecycle;
-using Sutom.Core;
-using Sutom.Mobile.Pages;
+﻿using Sutom.Mobile.Pages;
 using Sutom.Mobile.ViewModels;
 
 namespace Sutom.Mobile

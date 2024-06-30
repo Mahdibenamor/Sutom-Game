@@ -1,7 +1,6 @@
-﻿
-using Sutom.Mobile.ViewModels;
+﻿using Sutom.Mobile.ViewModels;
 
-namespace Sutom.Mobile.Services
+namespace Sutom.Mobile.Services.Navigation
 {
     public interface INavigationService
     {

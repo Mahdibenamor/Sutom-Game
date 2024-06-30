@@ -1,5 +1,4 @@
-﻿
-using Sutom.Mobile.Services;
+﻿using Sutom.Mobile.Services.Navigation;
 using System.Windows.Input;
 
 namespace Sutom.Mobile.ViewModels

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Sutom.Core;
 using Sutom.Mobile.Core;
-using Sutom.Mobile.Services;
+using Sutom.Mobile.Services.Navigation;
 using Sutom.Mobile.ViewModels;
 using System.Reflection;
 
