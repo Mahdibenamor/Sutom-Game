@@ -1,4 +1,6 @@
-﻿using Sutom.Mobile.Services.Navigation;
+﻿using Sutom.Absrtractions;
+using Sutom.Domain.Entites;
+using Sutom.Mobile.Services.Navigation;
 using System.Windows.Input;
 
 namespace Sutom.Mobile.ViewModels
@@ -57,9 +59,11 @@ namespace Sutom.Mobile.ViewModels
 
         public ICommand NavigateToGamePageCommand { get; }
         private readonly INavigationService _navigationService;
+        private readonly IGameService _gameService;
 
-        public MainPageViewModel(INavigationService navigation) {
+        public MainPageViewModel(INavigationService navigation, IGameService gameService) {
             _navigationService = navigation;
+            _gameService = gameService;
             BeginCommand = new Command(async () => await NavigateToGamePage());
 
         }
@@ -72,6 +76,7 @@ namespace Sutom.Mobile.ViewModels
         {
             ValidateWordLength();
             ValidateMaxAttempts();
+            Game game = await _gameService.StartNewGameAsync(wordLenght: WordLength, attemps: MaxAttempts);
             if (string.IsNullOrEmpty(WordLengthError) && string.IsNullOrEmpty(MaxAttemptsError))
             {
                 await _navigationService.NavigateToAsync<GamePageViewModel>();

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Sutom.Absrtractions;
+using Sutom.Application.Implementations;
 using Sutom.Core;
 using Sutom.Mobile.Core;
 using Sutom.Mobile.Services.DialogService;
@@ -32,7 +34,8 @@ namespace Sutom.Mobile
         }
         private static void ConfigureServices(IServiceCollection services)
         {
-            BuildPageViewModelMappings(services);
+            BuildPageViewModelMappings(services); 
+            services.AddSingleton<IGameService, RemoteGameService>();
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<IDialogService, DialogService>();
             ConfigureViewModel(services);
