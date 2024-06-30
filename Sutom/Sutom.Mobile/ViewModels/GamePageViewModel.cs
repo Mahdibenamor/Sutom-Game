@@ -1,4 +1,6 @@
 ﻿
+using Sutom.Mobile.Services.DialogService;
+using Sutom.Mobile.Services.Navigation;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 namespace Sutom.Mobile.ViewModels
@@ -56,15 +58,20 @@ namespace Sutom.Mobile.ViewModels
         public ICommand EnterCommand { get; }
         public ICommand BackCommand { get; }
         public ICommand LetterCommand { get; }
+        private readonly INavigationService _navigationService;
+        private readonly IDialogService _dialogService;
 
-        public GamePageViewModel()
+
+        public GamePageViewModel(INavigationService navigation, IDialogService dialogService)
         {
+            _navigationService = navigation;
+            _dialogService = dialogService;
             TryAgainCommand = new Command(OnTryAgain);
-            EnterCommand = new Command(OnEnter);
+            EnterCommand = new Command(async () => await OnEnter());
             BackCommand = new Command(OnBack);
             LetterCommand = new Command<string>(OnLetter);
             Board = new ObservableCollection<ObservableCollection<Models.Cell>>();
-            MaxAttempts = 2;
+            MaxAttempts = 3;
             WordLength = 5;
             CurrentAttempt = 0;
             InitializeBoard();
@@ -91,8 +98,9 @@ namespace Sutom.Mobile.ViewModels
             InitializeBoard();
         }
 
-        private void OnEnter()
+        private async Task OnEnter()
         {
+            //bool answer = await _dialogService.ConfirmationDialogAsync("Question?", "Would you like to play a game");
             if (currentAttempt < MaxAttempts)
             {
                 string guess = string.Join("", Board[currentAttempt].Select(c => c.Letter));

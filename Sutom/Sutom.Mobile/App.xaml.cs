@@ -7,6 +7,7 @@ namespace Sutom.Mobile
     {
         public static IServiceProvider Services { get; private set; }
         public static NavigationPage Navigation { get; private set; }
+        public static Page Page { get; private set; }
 
         public App(IServiceProvider serviceProvider)
         {
@@ -15,6 +16,7 @@ namespace Sutom.Mobile
             INavigationService? navigation = serviceProvider.GetService<INavigationService>();
             Navigation = new NavigationPage(navigation?.CreatePage<MainPageViewModel>(typeof(MainPageViewModel)));
             MainPage = Navigation;
+            Page = MainPage;
         }
     }
 }

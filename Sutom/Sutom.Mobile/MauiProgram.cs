@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Sutom.Core;
 using Sutom.Mobile.Core;
+using Sutom.Mobile.Services.DialogService;
 using Sutom.Mobile.Services.Navigation;
 using Sutom.Mobile.ViewModels;
 using System.Reflection;
@@ -14,6 +16,7 @@ namespace Sutom.Mobile
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -33,6 +36,7 @@ namespace Sutom.Mobile
         {
             BuildPageViewModelMappings(services);
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IDialogService, DialogService>();
             ConfigureViewModel(services);
             ConfigureViews(services);
         }
