@@ -1,4 +1,5 @@
 ﻿using Sutom.Mobile.Core;
+using Sutom.Mobile.Pages;
 using Sutom.Mobile.ViewModels;
 
 namespace Sutom.Mobile.Services
@@ -43,6 +44,7 @@ namespace Sutom.Mobile.Services
             var page = _serviceProvider.GetService(pageType) as Page;
             var viewModel = _serviceProvider.GetService(viewModelType) as TViewModel;
             page.BindingContext = viewModel;
+            (page as IBasePage<TViewModel>).Initialize();
             return page;
         }
     }

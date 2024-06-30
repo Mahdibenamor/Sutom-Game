@@ -8,20 +8,16 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Label Text="{Binding CountViewModel}"
-                   TextColor="Red"/>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+            <Label Text="New Game" FontSize="Large" HorizontalOptions="Center" />
 
-            <Button
-                Text="Navigate to Game Page"
-                Command="{Binding NavigateToGamePageCommand}"
-                HorizontalOptions="Fill"/>
+            <Entry Placeholder="Word Length" Keyboard="Numeric" Text="{Binding WordLength}" />
+            <Label Text="{Binding WordLengthError}" TextColor="Red" IsVisible="{Binding WordLengthError, Converter={StaticResource StringToVisibilityConverter}}" />
+
+            <Entry Placeholder="Max Attempts" Keyboard="Numeric" Text="{Binding MaxAttempts}" />
+            <Label Text="{Binding MaxAttemptsError}" TextColor="Red" IsVisible="{Binding MaxAttemptsError, Converter={StaticResource StringToVisibilityConverter}}" />
+
+            <Button Text="Begin" Command="{Binding BeginCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 

@@ -1,10 +1,11 @@
-﻿using Sutom.Core;
+﻿using AndroidX.Lifecycle;
+using Sutom.Core;
 using Sutom.Mobile.Pages;
 using Sutom.Mobile.ViewModels;
 
 namespace Sutom.Mobile
 {
-    [ViewModel(typeof(MainPageViewModel))]
+    [Sutom.Core.ViewModel(typeof(MainPageViewModel))]
     public partial class MainPage : ContentPage, IBasePage<MainPageViewModel>
     {
         private MainPageViewModel viewModel
@@ -18,9 +19,8 @@ namespace Sutom.Mobile
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        public void Initialize()
         {
-            viewModel.CountViewModel++;
         }
     }
 }

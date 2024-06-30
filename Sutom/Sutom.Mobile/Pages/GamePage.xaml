@@ -5,10 +5,12 @@
              x:DataType="viewModels:GamePageViewModel"
              x:Class="Sutom.Mobile.GamePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20" x:Name="MainStack">
+            <Button Text="Try Again" Command="{Binding TryAgainCommand}" BackgroundColor="Green" TextColor="White" />
+            <Label Text="SUTOM" FontSize="Large" HorizontalOptions="Center" />
+            <StackLayout x:Name="BoardStack" 
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

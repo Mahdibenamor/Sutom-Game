@@ -5,5 +5,6 @@ namespace Sutom.Mobile.Pages
 {
     public interface IBasePage<out ViewModel> where ViewModel : class, IBaseViewModel
     {
+        public void Initialize();
     }
 }
