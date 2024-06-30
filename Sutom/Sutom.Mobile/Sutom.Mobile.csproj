@@ -70,4 +70,8 @@
 		<ProjectReference Include="..\Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Images\" />
+	</ItemGroup>
+
 </Project>
