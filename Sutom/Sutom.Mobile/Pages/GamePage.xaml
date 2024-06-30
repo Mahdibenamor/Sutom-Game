@@ -6,11 +6,11 @@
              x:Class="Sutom.Mobile.GamePage">
     <ContentPage.Content>
         <StackLayout Padding="20" x:Name="MainStack">
-            <Button Text="Try Again" Command="{Binding TryAgainCommand}" BackgroundColor="Green" TextColor="White" />
             <Label Text="SUTOM" FontSize="Large" HorizontalOptions="Center" />
             <StackLayout x:Name="BoardStack" 
                          VerticalOptions="Center"
                          HorizontalOptions="Center"/>
+            <Button x:Name="checkButton" Margin="20" Text="Check the word" Command="{Binding EnterCommand}" BackgroundColor="Green" TextColor="White" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -10,6 +10,25 @@ namespace Sutom.Mobile.ViewModels
         private int currentAttempt;
         private int currentLetterIndex;
 
+        public int CurrentAttempt
+        {
+            get => currentAttempt;
+            set
+            {
+                currentAttempt = value;
+                OnPropertyChanged(nameof(CurrentAttempt));
+            }
+        }
+        public int CurrentLetterIndex
+        {
+            get => currentLetterIndex;
+            set
+            {
+                currentLetterIndex = value;
+                OnPropertyChanged(nameof(CurrentLetterIndex));
+            }
+        }
+
         public int WordLength
         {
             get => wordLength;
@@ -21,7 +40,7 @@ namespace Sutom.Mobile.ViewModels
             }
         }
 
-        public int MaxAttempts 
+        public int MaxAttempts
         {
             get => maxAttempts;
             set
@@ -38,22 +57,6 @@ namespace Sutom.Mobile.ViewModels
         public ICommand BackCommand { get; }
         public ICommand LetterCommand { get; }
 
-
-        private int _countViewModel = 10;
-        public int CountViewModel
-        {
-            get { return _countViewModel; }
-            set
-            {
-                if (_countViewModel != value)
-                {
-                    _countViewModel = value;
-                    OnPropertyChanged(nameof(CountViewModel));
-                }
-            }
-        }
-
-
         public GamePageViewModel()
         {
             TryAgainCommand = new Command(OnTryAgain);
@@ -61,8 +64,9 @@ namespace Sutom.Mobile.ViewModels
             BackCommand = new Command(OnBack);
             LetterCommand = new Command<string>(OnLetter);
             Board = new ObservableCollection<ObservableCollection<Models.Cell>>();
-            maxAttempts = 3;
-            wordLength = 3;
+            MaxAttempts = 2;
+            WordLength = 5;
+            CurrentAttempt = 0;
             InitializeBoard();
         }
 
@@ -89,10 +93,12 @@ namespace Sutom.Mobile.ViewModels
 
         private void OnEnter()
         {
-            if (currentAttempt < MaxAttempts - 1)
+            if (currentAttempt < MaxAttempts)
             {
-                currentAttempt++;
-                currentLetterIndex = 0;
+                string guess = string.Join("", Board[currentAttempt].Select(c => c.Letter));
+                System.Diagnostics.Debug.WriteLine($"Current guess: {guess}");
+                CurrentAttempt++;
+                CurrentLetterIndex = 0;
             }
         }
 
@@ -110,10 +116,9 @@ namespace Sutom.Mobile.ViewModels
             if (currentLetterIndex < WordLength)
             {
                 Board[currentAttempt][currentLetterIndex].Letter = letter;
-                currentLetterIndex++;
+                CurrentLetterIndex++;
             }
         }
-
 
         public override async Task InitializeAsync(object parameter)
         {
