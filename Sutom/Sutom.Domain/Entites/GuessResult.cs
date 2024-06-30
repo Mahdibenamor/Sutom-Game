@@ -12,6 +12,5 @@
         public bool Correct { get; set; }
         public bool ShowInfoMessage { get; set; }
         public List<LetterResult> LetterResults { get; set; } = new List<LetterResult>();
-
     }
 }

@@ -1,4 +1,7 @@
 ﻿
+using Sutom.Absrtractions;
+using Sutom.Application.Models;
+using Sutom.Domain.Entites;
 using Sutom.Mobile.Services.DialogService;
 using Sutom.Mobile.Services.Navigation;
 using System.Collections.ObjectModel;
@@ -11,6 +14,18 @@ namespace Sutom.Mobile.ViewModels
         private int maxAttempts;
         private int currentAttempt;
         private int currentLetterIndex;
+        private ObservableCollection<ObservableCollection<Models.Cell>> board;
+        public ObservableCollection<ObservableCollection<Models.Cell>> Board
+        {
+            get => board;
+            set
+            {
+                board = value;
+                OnPropertyChanged(nameof(Board));
+            }
+        }
+
+        private Game game { get; set; }
 
         public int CurrentAttempt
         {
@@ -53,33 +68,31 @@ namespace Sutom.Mobile.ViewModels
             }
         }
 
-        public ObservableCollection<ObservableCollection<Models.Cell>> Board { get; set; }
         public ICommand TryAgainCommand { get; }
         public ICommand EnterCommand { get; }
         public ICommand BackCommand { get; }
         public ICommand LetterCommand { get; }
         private readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
+        private readonly IGameService _gameService;
 
 
-        public GamePageViewModel(INavigationService navigation, IDialogService dialogService)
+        public GamePageViewModel(INavigationService navigation, IDialogService dialogService, IGameService gameService)
         {
             _navigationService = navigation;
             _dialogService = dialogService;
+            _gameService = gameService;
             TryAgainCommand = new Command(OnTryAgain);
             EnterCommand = new Command(async () => await OnEnter());
             BackCommand = new Command(OnBack);
             LetterCommand = new Command<string>(OnLetter);
             Board = new ObservableCollection<ObservableCollection<Models.Cell>>();
-            MaxAttempts = 3;
-            WordLength = 5;
-            CurrentAttempt = 0;
-            InitializeBoard();
         }
 
         private void InitializeBoard()
         {
-            Board.Clear();
+
+            ObservableCollection<ObservableCollection<Models.Cell>> board = new ObservableCollection<ObservableCollection<Models.Cell>>();
             for (int i = 0; i < MaxAttempts; i++)
             {
                 var row = new ObservableCollection<Models.Cell>();
@@ -87,8 +100,9 @@ namespace Sutom.Mobile.ViewModels
                 {
                     row.Add(new Models.Cell { BackgroundColor = "White" });
                 }
-                Board.Add(row);
+                board.Add(row);
             }
+            Board = board;
             currentAttempt = 0;
             currentLetterIndex = 0;
         }
@@ -100,13 +114,67 @@ namespace Sutom.Mobile.ViewModels
 
         private async Task OnEnter()
         {
-            //bool answer = await _dialogService.ConfirmationDialogAsync("Question?", "Would you like to play a game");
             if (currentAttempt < MaxAttempts)
             {
                 string guess = string.Join("", Board[currentAttempt].Select(c => c.Letter));
-                System.Diagnostics.Debug.WriteLine($"Current guess: {guess}");
-                CurrentAttempt++;
-                CurrentLetterIndex = 0;
+                GuessResult result = await _gameService.MakeGuessAsync(gameId: game.Id, guess: guess);
+                updateBoardWithGuessResult(guessResult: result, currentAttempt: currentAttempt);
+                await HandleGuessResulAndNavigate(guessResult: result, currentAttempt: currentAttempt, guess: guess);
+                if (!result.ShowInfoMessage)
+                {
+                    CurrentAttempt++;
+                    CurrentLetterIndex = 0;
+                }
+
+            }
+        }
+        private void updateBoardWithGuessResult(GuessResult guessResult, int currentAttempt)
+        {
+            if (!guessResult.ShowInfoMessage)
+            {
+                string computeCellColor(string status)
+                {
+                    switch (status)
+                    {
+                        case "correct": return "green";
+                        case "misplaced": return "yellow";
+                        case "wrong": return "red";
+                    }
+                    return "White";
+                }
+
+                ObservableCollection<ObservableCollection<Models.Cell>> board = Board;
+                var row = new ObservableCollection<Models.Cell>();
+                for (int i = 0; i < guessResult.LetterResults.Count; i++)
+                {
+                    row.Add(new Models.Cell
+                    {
+                        Letter = guessResult.LetterResults[i].Letter.ToString(),
+                        BackgroundColor = computeCellColor(guessResult.LetterResults[i].Status)
+                    });
+                }
+                board[currentAttempt] = row;
+                Board = board;
+            }
+        }
+
+        private async Task HandleGuessResulAndNavigate(GuessResult guessResult, int currentAttempt, string guess)
+        {
+            if (guessResult.ShowInfoMessage)
+            {
+                await _dialogService.ShowAlertAsync("Info", $"This word don't existe in the words dictionary: {guess}");
+                return;
+            }
+            if (guessResult.Correct)
+            {
+                await _dialogService.ShowAlertAsync("Well Done", $"You have succeeded to guess the word: {guess}");
+                await _navigationService.GoBackAsync();
+                return;
+            }
+            if(currentAttempt == maxAttempts - 1) {
+                await _dialogService.ShowAlertAsync("Failure", $"You have failed to guess the word");
+                await _navigationService.GoBackAsync();
+                return;
             }
         }
 
@@ -130,7 +198,11 @@ namespace Sutom.Mobile.ViewModels
 
         public override async Task InitializeAsync(object parameter)
         {
-            await Task.CompletedTask;
+            game = parameter as Game;
+            MaxAttempts = game.MaxAttemps;
+            WordLength = game.Difficulty;
+            CurrentAttempt = 0;
+            InitializeBoard();
         }
     }
 }

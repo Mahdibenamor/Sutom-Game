@@ -79,7 +79,7 @@ namespace Sutom.Mobile.ViewModels
             Game game = await _gameService.StartNewGameAsync(wordLenght: WordLength, attemps: MaxAttempts);
             if (string.IsNullOrEmpty(WordLengthError) && string.IsNullOrEmpty(MaxAttemptsError))
             {
-                await _navigationService.NavigateToAsync<GamePageViewModel>();
+                await _navigationService.NavigateToAsync<GamePageViewModel>(game);
             }
         }
 
