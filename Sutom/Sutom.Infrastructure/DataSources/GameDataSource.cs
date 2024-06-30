@@ -1,4 +1,4 @@
-﻿using Sutom.Application.Interfaces;
+﻿using Sutom.Absrtractions;
 using Sutom.Core;
 using Sutom.Domain.Entites;
 using System.Collections.Concurrent;

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Sutom.Mobile.ViewModels"
+             x:DataType="viewModels:MainPageViewModel"
+             x:Class="Sutom.Mobile.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label Text="New Game" FontSize="Large" HorizontalOptions="Center" />
+
+            <Entry Placeholder="Word Length" Keyboard="Numeric" Text="{Binding WordLength}" />
+            <Label Text="{Binding WordLengthError}" TextColor="Red" IsVisible="{Binding WordLengthError, Converter={StaticResource StringToVisibilityConverter}}" />
+
+            <Entry Placeholder="Max Attempts" Keyboard="Numeric" Text="{Binding MaxAttempts}" />
+            <Label Text="{Binding MaxAttemptsError}" TextColor="Red" IsVisible="{Binding MaxAttemptsError, Converter={StaticResource StringToVisibilityConverter}}" />
+
+            <Button Text="Begin" Command="{Binding BeginCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

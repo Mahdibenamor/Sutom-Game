@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sutom.Abstractions\Sutom.Abstractions.csproj" />
     <ProjectReference Include="..\Sutom.Application\Sutom.Application.csproj" />
     <ProjectReference Include="..\Sutom.DenpendencyInjection\Sutom.DenpendencyInjection.csproj" />
     <ProjectReference Include="..\Sutom.Domain\Sutom.Domain.csproj" />

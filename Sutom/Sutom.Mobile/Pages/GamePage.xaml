@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Sutom.Mobile.ViewModels"
+             x:DataType="viewModels:GamePageViewModel"
+             x:Class="Sutom.Mobile.GamePage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" x:Name="MainStack">
+            <Label Text="SUTOM" FontSize="Large" HorizontalOptions="Center" />
+            <StackLayout x:Name="BoardStack" 
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"/>
+            <Button x:Name="checkButton" Margin="20" Text="Check the word" Command="{Binding EnterCommand}" BackgroundColor="Green" TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

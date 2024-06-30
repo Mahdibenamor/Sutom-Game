@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sutom.Application.Interfaces;
-using Sutom.Application.Models;
+using Sutom.Absrtractions;
+using Sutom.Core.Models;
 using Sutom.Domain.Entites;
 
 namespace Sutom.Api.Controllers

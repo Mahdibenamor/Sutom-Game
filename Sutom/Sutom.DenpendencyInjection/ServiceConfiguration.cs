@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sutom.Application.Implementations;
-using Sutom.Application.Interfaces;
 using Sutom.Infrastructure.DataSources;
+using Sutom.Absrtractions;
+
 
 namespace Sutom.DenpendencyInjection
 {

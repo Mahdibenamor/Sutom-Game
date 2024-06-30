@@ -1,6 +1,5 @@
-﻿using Sutom.Application.Interfaces;
+﻿using Sutom.Absrtractions;
 using Sutom.Domain.Entites;
-using System.Collections.Concurrent;
 
 namespace Sutom.Application.Implementations
 {

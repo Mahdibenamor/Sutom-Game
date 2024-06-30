@@ -1,7 +1,7 @@
 ﻿using Sutom.Application.Models;
 using Sutom.Domain.Entites;
 
-namespace Sutom.Application.Interfaces
+namespace Sutom.Absrtractions
 {
     public interface IGameService
     {

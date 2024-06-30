@@ -1,4 +1,4 @@
-﻿using Sutom.Application.Interfaces;
+﻿using Sutom.Absrtractions;
 using System.Text.Json;
 
 namespace Sutom.Infrastructure.DataSources
